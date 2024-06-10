@@ -1,20 +1,22 @@
+package model;
+
 import java.util.Objects;
 
 public class Employee {
-    private int id;
+    private long id;
     private String name;
     private String surname;
     private String fatherName;
     private double salary;
-    private int departmentId;
+    private long departmentId;
 
     private static int lastId = 1;
 
     public Employee() {
     }
 
-    public Employee(int id, String name, String surname, String fatherName, double salary, int departmentId) {
-        this.id = lastId++;
+    public Employee(long id, String name, String surname, String fatherName, double salary, long departmentId) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.fatherName = fatherName;
@@ -22,7 +24,7 @@ public class Employee {
         this.departmentId = departmentId;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -58,7 +60,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    public int getDepartmentId() {
+    public long getDepartmentId() {
         return departmentId;
     }
 
@@ -77,5 +79,16 @@ public class Employee {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "model.Employee{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", fatherName='" + fatherName + '\'' +
+                ", salary=" + salary +
+                ", departmentId=" + departmentId +
+                '}';
     }
 }
