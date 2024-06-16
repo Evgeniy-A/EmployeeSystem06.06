@@ -43,6 +43,50 @@ public class EmployeeRepository {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return null;
+    }
+    // создание нового сотрудника
+    public void createEmployee(String name, String surname,String  fatherName, double salary,long departmentId)  {
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("INSERT INTO employees (name," +
+                            " surname, fathername, salary, department_id) values (?, ?, ?, ?, ?)");
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, surname);
+            preparedStatement.setString(3, fatherName);
+            preparedStatement.setDouble(4, salary);
+            preparedStatement.setLong(5, departmentId);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    // удаление сотрудника
+    public void deleteEmployeeById(long id){
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM employees WHERE id = ?");
+            preparedStatement.setLong(1, id);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    // обновление данных существующего сотрудника
+    public void updateEmployee(long id, String name, String surname, String fatherName, double salary, long departmentId) {
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("UPDATE employees SET name = ? " +
+                            ", surname = ?, fathername = ?, salary = ?, department_id = ? WHERE id = ?");
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, surname);
+            preparedStatement.setString(3, fatherName);
+            preparedStatement.setDouble(4, salary);
+            preparedStatement.setLong(5, departmentId);
+            preparedStatement.setLong(6, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -1,4 +1,5 @@
 import model.Employee;
+import repository.EmployeeRepository;
 import service.EmployeeSystem;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -8,13 +9,13 @@ public class Main {
 
         EmployeeSystem employeeSystem = new EmployeeSystem(10);
 
-        Employee employee = new Employee("Ivan", "Ivanov", "Ivanovich", 30000, 1);
-        Employee employee2 = new Employee("Petr", "Petrov", "Petrovich", 35000, 2);
-        Employee employee3 = new Employee("Anton", "Antonov", "Antonovich", 40000, 3);
+    //    Employee employee = new Employee("Ivan", "Ivanov", "Ivanovich", 30000, 1);
+      //  Employee employee2 = new Employee("Petr", "Petrov", "Petrovich", 35000, 2);
+    //    Employee employee3 = new Employee("Anton", "Antonov", "Antonovich", 40000, 3);
 
-       employeeSystem.addEmployee(employee);
-       employeeSystem.addEmployee(employee2);
-       employeeSystem.addEmployee(employee3);
+//       employeeSystem.addEmployee(employee);
+//       employeeSystem.addEmployee(employee2);
+//       employeeSystem.addEmployee(employee3);
 
        Employee[] emps = employeeSystem.getAllEmployees();
 
@@ -27,9 +28,9 @@ public class Main {
 
      //  int number = employeeSystem.getEmployeeLowSalary(38000);
 
-
-
-
+        EmployeeRepository employeeRepository1 = new EmployeeRepository();
+        employeeRepository1.createEmployee("Ivan", "Ivanov", "Ivanovich", 30000, 1);
+        employeeRepository1.deleteEmployeeById(1);
     }
 
 }
