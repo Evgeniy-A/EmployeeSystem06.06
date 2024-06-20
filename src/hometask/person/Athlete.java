@@ -1,4 +1,4 @@
-package hometask.frut.person.frut.person;
+package hometask.person;
 
 public class Athlete extends Person {
 

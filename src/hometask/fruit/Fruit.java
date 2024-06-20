@@ -1,4 +1,4 @@
-package hometask.frut.person.frut;
+package hometask.fruit;
 
 public abstract  class Fruit {
     private int weightInKg;
