@@ -1,11 +1,11 @@
 package generics.task2;
 
-import generics.zoo.Animal;
+
 
 import java.io.Serializable;
 import java.sql.SQLOutput;
 
-public class Task2 <T extends Comparable,V extends Animal& Serializable,K>{
+public class Task2 <T extends Comparable,V, K>{
     T name1;
     V name2;
     K name3;
