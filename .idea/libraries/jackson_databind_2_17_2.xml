@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="jackson-databind-2.17.2">
+    <CLASSES>
+      <root url="jar://E:/Загрузки/jackson-databind-2.17.2.jar!/" />
+      <root url="jar://E:/Загрузки/gson-2.11.0.jar!/" />
+      <root url="jar://E:/Загрузки/commons-lang3-3.16.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
