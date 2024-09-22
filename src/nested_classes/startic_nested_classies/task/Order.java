@@ -17,7 +17,7 @@ public class Order {
     public Order createNewOrder(String name, double price){
         Item item = new Item(name, price);
         Order order = new Order(item);
-        order.toString();
+        System.out.println(order.toString());
         return order;
     }
 
