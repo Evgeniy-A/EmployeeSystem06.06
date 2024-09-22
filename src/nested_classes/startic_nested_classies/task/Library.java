@@ -4,29 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    List <Book> books = new ArrayList<>();
-    List <BookCategory> categories = new ArrayList<>();
+    List<Book> books = new ArrayList<>();
+    List<BookCategory> categories = new ArrayList<>();
 
     public Library(List<Book> books, List<BookCategory> categories) {
         this.books = books;
         this.categories = categories;
     }
 
-    public void addCategory(String categoryName){
+    public void addCategory(String categoryName) {
         BookCategory newCategory = new BookCategory(categoryName);
         categories.add(newCategory);
     }
 
     public void addBook(String title, String author, String categoryName) {
-        addCategory(categoryName);
-        Book book = new Book(title, author, new BookCategory(categoryName));
+        Book book = new Book(title, author, getBookCategoryByName(categoryName));
         books.add(book);
     }
 
+    public BookCategory getBookCategoryByName(String categoryName) {
+        for (BookCategory category : categories) {
+            if (category.getName().equals(categoryName)) {
+                return category;
+            }
+        }
+        BookCategory category = new BookCategory(categoryName);
+        categories.add(category);
+        return category;
+    }
 
 
-
-    class BookCategory{
+    static class BookCategory {
         private String name;
 
         public BookCategory(String name) {
@@ -41,9 +49,10 @@ public class Library {
             this.name = name;
         }
     }
-    static class Book {
-         private String title;
-         private String author;
+
+    class Book {
+        private String title;
+        private String author;
         private BookCategory category;
 
         public Book(String title, String author, BookCategory category) {
@@ -53,20 +62,20 @@ public class Library {
         }
 
         public String getTitle() {
-             return title;
-         }
+            return title;
+        }
 
-         public void setTitle(String title) {
-             this.title = title;
-         }
+        public void setTitle(String title) {
+            this.title = title;
+        }
 
-         public String getAuthor() {
-             return author;
-         }
+        public String getAuthor() {
+            return author;
+        }
 
-         public void setAuthor(String author) {
-             this.author = author;
-         }
+        public void setAuthor(String author) {
+            this.author = author;
+        }
 
         public BookCategory getCategory() {
             return category;
