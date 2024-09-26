@@ -4,10 +4,13 @@ import clone.person.Person;
 
 public class LocalClassTask {
     public static void main(String[] args) {
-        checkAge();
-    }
+       if (checkAge()) {
+           System.out.println("Человек совершеннолетний");
+       }
+       else System.out.println("Человек несовершеннолетний");
+       }
 
-    public static void checkAge() {
+    public static boolean checkAge() {
         class Person {
             private int age;
 
@@ -24,9 +27,6 @@ public class LocalClassTask {
             }
         }
         Person person1 = new Person(14);
-        if (person1.isAdult()) {
-            System.out.println("Человек совершеннолетний");
-        }
-        else System.out.println("Человек несовершеннолетний");
+        return person1.isAdult();
     }
 }
