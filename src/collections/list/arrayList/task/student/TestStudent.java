@@ -17,11 +17,11 @@ public class TestStudent {
         list.add(student4);
         System.out.println(list);
 
-        if(!list.isEmpty()) {
-        int index = list.indexOf(new Student("Студент", 2));
-        list.remove(index);
-        list.add(new Student("Ирина", index));
-        System.out.println(list);
+        if (!list.isEmpty()) {
+            int index = list.indexOf(new Student("Студент", 2));
+            list.remove(index);
+            list.add(new Student("Ирина", index));
+            System.out.println(list);
         }
 
         list.clear();
