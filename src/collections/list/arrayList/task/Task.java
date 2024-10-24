@@ -19,6 +19,7 @@ public class Task {
                 list.remove(i);
             }
         }
+        list.clear();
 
         System.out.println(list);
     }
