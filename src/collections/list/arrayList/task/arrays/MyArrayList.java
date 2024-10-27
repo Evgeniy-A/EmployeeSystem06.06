@@ -1,8 +1,6 @@
 package collections.list.arrayList.task.arrays;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Objects;
 
 public class MyArrayList<T> {
@@ -20,7 +18,12 @@ public class MyArrayList<T> {
       public MyArrayList() {
         this.elementData = new Object[DEFAULT_CAPACITY];
     }
-//
+
+    public int getSize() {
+        return size;
+    }
+
+    //
 //  //  public void ensureCapacity() {
 //   //     if (elementData.length == size) {
 //    //        elementData = Arrays.copyOf(elementData, elementData.length * 2);
@@ -48,7 +51,7 @@ public class MyArrayList<T> {
         elementData[size++] = element;
     }
 
-    public Object[] getElementData() {
+    private Object[] getElementData() {
         return elementData;
     }
 
@@ -76,8 +79,8 @@ public class MyArrayList<T> {
         elementData[index] = element;
     }
 
-    public boolean addAll(Collection<? extends T> c){
-        int cSize = c.size();
+    public boolean addAll(MyArrayList<String> c){
+        int cSize = c.getSize();
         ensureCapacity(size + cSize);
         Object[] array = c.toArray();
         System.arraycopy(array, 0, elementData, size, cSize);
@@ -85,11 +88,11 @@ public class MyArrayList<T> {
         return cSize != 0;
     }
 
-    public boolean addAll(int index, Collection<? extends T> c) {
+    public boolean addAll(int index, MyArrayList<String> c) {
         if (index > size || index < 0){
             throw new IndexOutOfBoundsException("Индекс выходит за пределы коллекции");
         }
-        int cSize = c.size();
+        int cSize = c.size;
         ensureCapacity(size + cSize);
         Object[] array = c.toArray();
         System.arraycopy(elementData, index, elementData, index + cSize, size - index);
@@ -129,9 +132,7 @@ public class MyArrayList<T> {
     }
 
     public void clear() {
-        for (int i = 0; i < size; i++) {
-            elementData[i] = null;
-        }
+        this.elementData = new Object[DEFAULT_CAPACITY];
         size = 0;
     }
 
