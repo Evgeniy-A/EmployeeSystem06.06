@@ -3,6 +3,7 @@ package collections.list.arrayList.task.arrays;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 public class MyArrayList<T> {
 
@@ -114,18 +115,13 @@ public class MyArrayList<T> {
     }
 
     public boolean remove(Object o) {
-        boolean isremove = false;
-        if (o == null){
-            return false;
-        }
         for (int i = 0; i < size; i++) {
             if (elementData[i].equals(o)){
                 remove(i);
-                isremove = true;
-                break;
+                return true;
             }
         }
-        return isremove;
+        return false;
     }
 
     public boolean isEmpty(){
@@ -133,21 +129,67 @@ public class MyArrayList<T> {
     }
 
     public void clear() {
-        if (isEmpty()){
-            throw new UnsupportedOperationException ("Коллекция пуста");
-        }
         for (int i = 0; i < size; i++) {
             elementData[i] = null;
         }
+        size = 0;
     }
 
     public boolean contains(Object o) {
-        boolean isContains = false;
-        for (Object e : elementData) {
-            if(e.equals(o)){
-                isContains = true;
+        return indexOf(o) > -1;
+    }
+
+    public int indexOf(Object o){
+        for(int i = 0; i < size; i++){
+            if (elementData[i].equals(o)){
+                return i;
             }
         }
-        return isContains;
+        return -1;
+    }
+
+    public int lastIndexOf(Object o){
+        for(int i = size -1; i > -1; i--){
+            if (elementData[i].equals(o)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyArrayList<?> that = (MyArrayList<?>) o;
+        return size == that.size && Arrays.equals(elementData, that.elementData);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(size);
+        result = 31 * result + Arrays.hashCode(elementData);
+        return result;
+    }
+
+    public Object[] toArray(){
+        return Arrays.copyOf(elementData, size);
+    }
+
+    @SuppressWarnings("unchecked")
+    public<T> T[]  toArray(T[] a){
+        if(a.length < size){
+            return (T []) Arrays.copyOf(elementData, size, a.getClass());
+        }
+        System.arraycopy(elementData, 0, a, 0, size);
+        if(a.length > size) {
+            a[size] = null;
+        }
+        return a;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(elementData);
     }
 }
