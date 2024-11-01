@@ -1,6 +1,7 @@
 package collections.list.arrayList.task.arrays;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
 public class MyArrayList<T> {
@@ -79,8 +80,8 @@ public class MyArrayList<T> {
         elementData[index] = element;
     }
 
-    public boolean addAll(MyArrayList<String> c){
-        int cSize = c.getSize();
+    public boolean addAll(Collection<? extends T> c){
+        int cSize = c.size();
         ensureCapacity(size + cSize);
         Object[] array = c.toArray();
         System.arraycopy(array, 0, elementData, size, cSize);
@@ -88,11 +89,11 @@ public class MyArrayList<T> {
         return cSize != 0;
     }
 
-    public boolean addAll(int index, MyArrayList<String> c) {
+    public boolean addAll(int index, Collection<? extends T> c) {
         if (index > size || index < 0){
             throw new IndexOutOfBoundsException("Индекс выходит за пределы коллекции");
         }
-        int cSize = c.size;
+        int cSize = c.size();
         ensureCapacity(size + cSize);
         Object[] array = c.toArray();
         System.arraycopy(elementData, index, elementData, index + cSize, size - index);
@@ -125,6 +126,16 @@ public class MyArrayList<T> {
             }
         }
         return false;
+    }
+
+    public boolean removeAll (Collection <?> c) {
+        boolean modified = false;
+        for ( Object o: c) {
+            while (remove(o)){
+                modified = true;
+            }
+        }
+        return modified;
     }
 
     public boolean isEmpty(){
@@ -193,4 +204,6 @@ public class MyArrayList<T> {
     public String toString() {
         return Arrays.toString(elementData);
     }
+
+
 }
